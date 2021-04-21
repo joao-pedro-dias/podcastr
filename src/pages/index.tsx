@@ -62,6 +62,7 @@ export default function Home({latestEpisodes, allEpisodes}: HomeProps) {
 
       <section className={styles.allEpisodes}>
         <h2>Todos os episódios</h2>
+        
         <table cellSpacing={0}>
           <thead>
             <tr>
@@ -89,7 +90,7 @@ export default function Home({latestEpisodes, allEpisodes}: HomeProps) {
                   </td>
 
                   <td>
-                    <Link href={`/episodes/ ${episode.id}`}>
+                    <Link href={`/episodes/${episode.id}`}>
                       <a>{episode.title}</a>
                     </Link>
                   </td>
@@ -111,11 +112,11 @@ export default function Home({latestEpisodes, allEpisodes}: HomeProps) {
   )
 }
 
-export  const getStaticProps: GetStaticProps = async () =>{
+export const getStaticProps: GetStaticProps = async () => {
   const { data } = await api.get('episodes', {
     params:{
       _limit: 12,
-      _sort: 'pulished_at',
+      _sort: 'published_at',
       _order: 'desc'
     }
   }) // _limit=12&_sort=pulished_at&_order=desc = a página vai apresentar somente 12 registros, vai buscar pela data de publicação e ordernar de forma decrescente
